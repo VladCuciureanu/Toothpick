@@ -1,20 +1,28 @@
 import { List } from "@raycast/api";
-import DeviceListItem from "./components/device-list-item";
 import getDevices from "./services/bluetooth/getDevices";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Device } from "./services/bluetooth/types";
+import DeviceListItem from "./components/device-list-item";
 
 export default function ViewDevices() {
-  const devices = getDevices();
-  const [forceUpdateFlag, forceUpdate] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [devices, setDevices] = useState<Device[]>([]);
 
-  const updateList = () => {
-    forceUpdate(!forceUpdateFlag);
+  useEffect(() => {
+    setDevices(getDevices());
+    setLoading(false);
+  }, []);
+
+  const refreshDevices = () => {
+    setLoading(true);
+    setDevices(getDevices());
+    setLoading(false);
   };
 
   return (
-    <List>
+    <List isLoading={loading}>
       {devices.map((device, index) => (
-        <DeviceListItem key={index} device={device} refreshCallback={updateList} />
+        <DeviceListItem key={index} device={device} refreshCallBack={() => refreshDevices()} />
       ))}
     </List>
   );

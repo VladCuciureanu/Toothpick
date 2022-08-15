@@ -1,13 +1,37 @@
-import { Action, ActionPanel, Color, List } from "@raycast/api";
+import { Action, ActionPanel, Color, List, showToast, Toast } from "@raycast/api";
 import { connectDevice, disconnectDevice } from "src/services/bluetooth/handleDeviceConnection";
 import { Device } from "src/services/bluetooth/types";
+import { useState } from "react";
 
 type DeviceItemListProps = {
   device: Device;
-  refreshCallback: () => void;
+  refreshCallBack: () => void;
 };
 
 export default function DeviceListItem(props: DeviceItemListProps) {
+  const connect = (macAddress: string) => {
+    showToast({ style: Toast.Style.Animated, title: "Connecting..." });
+    try {
+      connectDevice(macAddress);
+    } catch {
+      showToast({ style: Toast.Style.Failure, title: "Failed to connect." });
+      return;
+    }
+    showToast({ style: Toast.Style.Success, title: "Device connected successfully." });
+    props.refreshCallBack();
+  };
+
+  const disconnect = (macAddress: string) => {
+    showToast({ style: Toast.Style.Animated, title: "Disconnecting..." });
+    try {
+      disconnectDevice(macAddress);
+    } catch {
+      showToast({ style: Toast.Style.Failure, title: "Failed to disconnect." });
+    }
+    showToast({ style: Toast.Style.Success, title: "Device disconnected." });
+    props.refreshCallBack();
+  };
+
   return (
     <List.Item
       icon={props.device.icon}
@@ -20,19 +44,13 @@ export default function DeviceListItem(props: DeviceItemListProps) {
           {props.device.connected ? (
             <Action
               title="Disconnect"
-              onAction={() => {
-                disconnectDevice(props.device.macAddress);
-                props.refreshCallback();
-              }}
+              onAction={() => disconnect(props.device.macAddress)}
               icon={{ source: "icons/disconnect.svg", tintColor: Color.PrimaryText }}
             />
           ) : (
             <Action
               title="Connect"
-              onAction={() => {
-                connectDevice(props.device.macAddress);
-                props.refreshCallback();
-              }}
+              onAction={() => connect(props.device.macAddress)}
               icon={{ source: "icons/connect.svg", tintColor: Color.PrimaryText }}
             />
           )}
