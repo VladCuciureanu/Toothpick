@@ -16,7 +16,8 @@ Connecting to your Bluetooth devices <!--and changing your AirPods' noise-cancel
 
 ## Getting Started
 
-Visit this extension's [store page](https://www.raycast.com/vladinski/bluetooth) to get started. After installing, follow the instructions on screen, and you should be good to go!
+Visit this extension's [store page](https://www.raycast.com/vladinski/bluetooth) to get started.<br/>
+After installing, follow the instructions on screen, and you should be good to go!
 
 ## Feedback
 
