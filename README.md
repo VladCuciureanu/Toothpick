@@ -9,7 +9,8 @@
   </a>
 </p>
 
-[This extension](https://github.com/VladCuciureanu/RaycastBluetooth) lets you control your Bluetooth devices with a few keystrokes. Connecting to your Bluetooth devices <!--and changing your AirPods' noise-cancelling profile -->has never been faster :)
+[This extension](https://github.com/VladCuciureanu/RaycastBluetooth) lets you control your Bluetooth devices with a few keystrokes.<br/>
+Connecting to your Bluetooth devices <!--and changing your AirPods' noise-cancelling profile -->has never been faster :)
 
 <!-- ![Header](assets/header.png) -->
 
