@@ -1,4 +1,4 @@
-import { Action, ActionPanel, List } from "@raycast/api";
+import { Action, ActionPanel, Color, List } from "@raycast/api";
 import { connectDevice, disconnectDevice } from "src/services/bluetooth/handleDeviceConnection";
 import { Device } from "src/services/bluetooth/types";
 
@@ -24,7 +24,7 @@ export default function DeviceListItem(props: DeviceItemListProps) {
                 disconnectDevice(props.device.macAddress);
                 props.refreshCallback();
               }}
-              icon={{ source: "icons/disconnect.svg" }}
+              icon={{ source: "icons/disconnect.svg", tintColor: Color.PrimaryText }}
             />
           ) : (
             <Action
@@ -33,7 +33,7 @@ export default function DeviceListItem(props: DeviceItemListProps) {
                 connectDevice(props.device.macAddress);
                 props.refreshCallback();
               }}
-              icon={{ source: "icons/connect.svg" }}
+              icon={{ source: "icons/connect.svg", tintColor: Color.PrimaryText }}
             />
           )}
           {props.device.actions}
