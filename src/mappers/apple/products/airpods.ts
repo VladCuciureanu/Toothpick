@@ -1,4 +1,4 @@
-import { Device, RawDeviceData } from "src/services/bluetooth/types";
+import { Device, RawDeviceData } from "src/types";
 
 function populate(device: Device, deviceData: RawDeviceData) {
   const deviceName = Object.keys(deviceData)[0];
