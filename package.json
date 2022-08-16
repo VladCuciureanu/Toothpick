@@ -20,7 +20,8 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.38.2"
+    "@raycast/api": "^1.38.2",
+    "run-applescript": "^6.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -37,5 +38,6 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "build": "ray build -e dist",
     "publish": "ray publish"
-  }
+  },
+  "version": "0.1.0"
 }

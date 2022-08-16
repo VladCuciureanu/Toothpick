@@ -1,12 +1,12 @@
-import { execSync } from "child_process";
-import BluetoothDependencies from "src/utils/dependencies";
 import { RawDeviceData } from "./types";
+import { readFileSync } from "fs";
+import { runAppleScriptSync } from "run-applescript";
+import { resolve } from "path";
 
 export default function fetchDevicesData(): RawDeviceData[] {
   // Fetch bluetooth data
-  const fetchedData = execSync("system_profiler SPBluetoothDataType -json", {
-    env: { PATH: BluetoothDependencies.systemProfilerPath },
-  }).toString();
+  const script = readFileSync(resolve(__dirname, "assets/scripts/getAllDevices.applescript")).toString();
+  const fetchedData = runAppleScriptSync(`${script}`);
 
   // Parse fetched data
   const rawData: Array<Record<string, RawDeviceData[]>> = JSON.parse(fetchedData)["SPBluetoothDataType"];

@@ -1,7 +1,6 @@
 import { Action, ActionPanel, Color, List, showToast, Toast } from "@raycast/api";
 import { connectDevice, disconnectDevice } from "src/services/bluetooth/handleDeviceConnection";
 import { Device } from "src/services/bluetooth/types";
-import { useState } from "react";
 
 type DeviceItemListProps = {
   device: Device;
@@ -9,11 +8,12 @@ type DeviceItemListProps = {
 };
 
 export default function DeviceListItem(props: DeviceItemListProps) {
-  const connect = (macAddress: string) => {
+  const connect = (deviceMacAddress: string) => {
     showToast({ style: Toast.Style.Animated, title: "Connecting..." });
     try {
-      connectDevice(macAddress);
-    } catch {
+      connectDevice(deviceMacAddress);
+    } catch (error) {
+      console.log(error);
       showToast({ style: Toast.Style.Failure, title: "Failed to connect." });
       return;
     }
@@ -21,15 +21,15 @@ export default function DeviceListItem(props: DeviceItemListProps) {
     props.refreshCallBack();
   };
 
-  const disconnect = (macAddress: string) => {
+  const disconnect = async (deviceMacAddress: string) => {
     showToast({ style: Toast.Style.Animated, title: "Disconnecting..." });
     try {
-      disconnectDevice(macAddress);
+      disconnectDevice(deviceMacAddress);
     } catch {
       showToast({ style: Toast.Style.Failure, title: "Failed to disconnect." });
     }
-    showToast({ style: Toast.Style.Success, title: "Device disconnected." });
     props.refreshCallBack();
+    showToast({ style: Toast.Style.Success, title: "Device disconnected." });
   };
 
   return (

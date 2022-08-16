@@ -1,3 +1,3 @@
 # AirPort Changelog
 
-## [Initial Version] - 2022-07-28
+## [Initial Version] - 2022-08-16
