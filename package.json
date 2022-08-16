@@ -12,8 +12,8 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "list-devices",
-      "title": "View Devices",
+      "name": "manage-devices",
+      "title": "Manage Devices",
       "subtitle": "Bluetooth",
       "description": "Opens a list of paired bluetooth devices.",
       "mode": "view"

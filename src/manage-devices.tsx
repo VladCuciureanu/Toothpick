@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Device } from "./services/bluetooth/types";
 import DeviceListItem from "./components/device-list-item";
 
-export default function ViewDevices() {
+export default function ManageDevices() {
   const [loading, setLoading] = useState(true);
   const [devices, setDevices] = useState<Device[]>([]);
 
