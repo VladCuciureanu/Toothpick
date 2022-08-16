@@ -17,7 +17,7 @@ export function openConnection(deviceMacAddress: string) {
   const result = runAppleScriptSync(
     `${script}\n\nreturn connectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
   );
-  if (result !== "0") throw "Failed to disconnect device.";
+  if (result !== "0") throw "Failed to connect device.";
 }
 
 export function closeConnection(deviceMacAddress: string) {
