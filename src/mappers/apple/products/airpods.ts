@@ -29,13 +29,13 @@ function populate(device: Device, deviceData: RawDeviceData) {
       batteryIcons.right = "icons/devices/extra/airpods.gen3.right.svg";
       break;
     case Airpods.Models.Pro:
-      device.icon = { source: "icons/devices/airpodspro.svg" };
-      batteryIcons.case = "icons/devices/extra/airpodspro.case.svg";
-      batteryIcons.left = "icons/devices/extra/airpodspro.left.svg";
-      batteryIcons.right = "icons/devices/extra/airpodspro.right.svg";
+      device.icon = { source: "icons/devices/airpods.pro.svg" };
+      batteryIcons.case = "icons/devices/extra/airpods.pro.case.svg";
+      batteryIcons.left = "icons/devices/extra/airpods.pro.left.svg";
+      batteryIcons.right = "icons/devices/extra/airpods.pro.right.svg";
       break;
     case Airpods.Models.Max:
-      device.icon = { source: "icons/devices/airpodsmax.svg" };
+      device.icon = { source: "icons/devices/airpods.max.svg" };
       batteryIcons.main = "icons/bolt.svg";
       break;
   }
