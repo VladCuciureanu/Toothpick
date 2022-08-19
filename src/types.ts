@@ -11,4 +11,5 @@ export type Device = {
   macAddress: string;
   connected: boolean;
   productId: string | undefined;
+  vendorId: string | undefined;
 };

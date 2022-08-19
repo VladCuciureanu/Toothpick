@@ -2,10 +2,10 @@ import { Color } from "@raycast/api";
 import { Device, RawDeviceData } from "src/types";
 
 function populate(device: Device, deviceData: RawDeviceData) {
-  const deviceName = Object.keys(deviceData)[0];
-  const deviceProperties = deviceData[deviceName];
-  const deviceConnected = deviceProperties["device_connected"] === "true";
+  // Extract properties for easier access
+  const deviceProperties = deviceData[device.name];
 
+  // Prepare structure for accessories battery icons
   const batteryIcons: { main: string; case: string; left: string; right: string } = {
     main: "",
     case: "",
@@ -41,27 +41,38 @@ function populate(device: Device, deviceData: RawDeviceData) {
   }
 
   // Populate accessories
-  if (deviceConnected) {
+  if (device.connected) {
     const mainBatteryLevel = deviceProperties["device_batteryLevelMain"];
     const caseBatteryLevel = deviceProperties["device_batteryLevelCase"];
     const leftAirpodBatteryLevel = deviceProperties["device_batteryLevelLeft"];
     const rightAirpodBatteryLevel = deviceProperties["device_batteryLevelRight"];
-
-    device.accessories = [
-      mainBatteryLevel
-        ? { text: mainBatteryLevel, icon: { source: batteryIcons.main, tintColor: Color.PrimaryText } }
-        : {},
-      caseBatteryLevel
-        ? { text: caseBatteryLevel, icon: { source: batteryIcons.case, tintColor: Color.PrimaryText } }
-        : {},
-      leftAirpodBatteryLevel
-        ? { text: leftAirpodBatteryLevel, icon: { source: batteryIcons.left, tintColor: Color.PrimaryText } }
-        : {},
-      rightAirpodBatteryLevel
-        ? { text: rightAirpodBatteryLevel, icon: { source: batteryIcons.right, tintColor: Color.PrimaryText } }
-        : {},
-    ];
+    if (mainBatteryLevel) {
+      device.accessories.push({
+        text: mainBatteryLevel,
+        icon: { source: batteryIcons.main, tintColor: Color.PrimaryText },
+      });
+    }
+    if (caseBatteryLevel) {
+      device.accessories.push({
+        text: caseBatteryLevel,
+        icon: { source: batteryIcons.case, tintColor: Color.PrimaryText },
+      });
+    }
+    if (leftAirpodBatteryLevel) {
+      device.accessories.push({
+        text: leftAirpodBatteryLevel,
+        icon: { source: batteryIcons.left, tintColor: Color.PrimaryText },
+      });
+    }
+    if (rightAirpodBatteryLevel) {
+      device.accessories.push({
+        text: rightAirpodBatteryLevel,
+        icon: { source: batteryIcons.right, tintColor: Color.PrimaryText },
+      });
+    }
   }
+
+  // Return populated device
   return device;
 }
 

@@ -1,37 +1,21 @@
 import { Device, RawDeviceData } from "../../types";
-import mapGenericDevice from "../generic";
 import Airpods from "./products/airpods";
 import MagicKeyboard from "./products/magic-keyboard";
 import MagicMouse from "./products/magic-mouse";
 
-export default function mapAppleDevice(deviceData: RawDeviceData): Device {
-  // Extract useful data
-  const deviceName = Object.keys(deviceData)[0];
-  const deviceProperties = deviceData[deviceName];
-  const deviceProductId = deviceProperties["device_productID"];
-  const deviceConnected = deviceProperties["device_connected"] === "true";
+export default function mapAppleDevice(device: Device, rawDeviceData: RawDeviceData): Device {
+  // Ensuring type safety
+  const productId = device.productId ? device.productId : "unknown";
 
-  // Build base device object
-  let device: Device = {
-    name: deviceName,
-    macAddress: deviceProperties["device_address"],
-    connected: deviceConnected,
-    icon: { source: "icons/devices/bluetooth.svg" },
-    productId: deviceProductId,
-    model: undefined,
-    accessories: [],
-    actions: [],
-  };
-
-  // Map object to corresponding populate method
-  if (Object.values(Airpods.Models).includes(deviceProductId)) {
-    device = Airpods.populate(device, deviceData);
-  } else if (Object.values(MagicKeyboard.Models).includes(deviceProductId)) {
-    device = MagicKeyboard.populate(device, deviceData);
-  } else if (Object.values(MagicMouse.Models).includes(deviceProductId)) {
-    device = MagicMouse.populate(device, deviceData);
+  // Redirect object to corresponding populate method
+  if (Object.values(Airpods.Models).includes(productId)) {
+    device = Airpods.populate(device, rawDeviceData);
+  } else if (Object.values(MagicKeyboard.Models).includes(productId)) {
+    device = MagicKeyboard.populate(device, rawDeviceData);
+  } else if (Object.values(MagicMouse.Models).includes(productId)) {
+    device = MagicMouse.populate(device, rawDeviceData);
   } else {
-    return mapGenericDevice(deviceData);
+    return device;
   }
 
   return device;

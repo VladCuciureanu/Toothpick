@@ -79,26 +79,18 @@ function _injectConnectionStatus(device: RawDeviceData, isConnected: boolean) {
 }
 
 function _mapDevice(deviceData: RawDeviceData): Device {
-  let device = undefined;
-
-  // Extract useful properties
-  const deviceName = Object.keys(deviceData)[0];
-  const deviceProperties = deviceData[deviceName];
-  const deviceVendorId = deviceProperties["device_vendorID"];
-  const deviceConnected = deviceProperties["device_connected"] === "true";
+  // Initialize generic device object
+  let device = mapGenericDevice(deviceData);
 
   // Map device by vendor
-  switch (deviceVendorId) {
+  switch (device.vendorId) {
     case "0x004C": // Apple
-      device = mapAppleDevice(deviceData);
-      break;
-    default:
-      device = mapGenericDevice(deviceData);
+      device = mapAppleDevice(device, deviceData);
       break;
   }
 
   // Modify icon path to reflect connection state
-  if (deviceConnected) {
+  if (device.connected) {
     device.icon.source = device.icon.source.toString().replace("icons/devices/", "icons/devices/connected/");
   }
 
