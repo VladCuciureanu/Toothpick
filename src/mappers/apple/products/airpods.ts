@@ -17,25 +17,25 @@ function populate(device: Device, deviceData: RawDeviceData) {
   switch (device.productId) {
     case Airpods.Models[1]:
     case Airpods.Models[2]:
-      device.icon = { source: "icons/devices/airpods.svg" };
-      batteryIcons.case = "icons/devices/extra/airpods.case.svg";
-      batteryIcons.left = "icons/devices/extra/airpods.left.svg";
-      batteryIcons.right = "icons/devices/extra/airpods.right.svg";
+      device.icon = { source: "icons/devices/apple/airpods.svg" };
+      batteryIcons.case = "icons/devices/apple/extra/airpods.case.svg";
+      batteryIcons.left = "icons/devices/apple/extra/airpods.left.svg";
+      batteryIcons.right = "icons/devices/apple/extra/airpods.right.svg";
       break;
     case Airpods.Models[3]:
-      device.icon = { source: "icons/devices/airpods.gen3.svg" };
-      batteryIcons.case = "icons/devices/extra/airpods.gen3.case.svg";
-      batteryIcons.left = "icons/devices/extra/airpods.gen3.left.svg";
-      batteryIcons.right = "icons/devices/extra/airpods.gen3.right.svg";
+      device.icon = { source: "icons/devices/apple/airpods.gen3.svg" };
+      batteryIcons.case = "icons/devices/apple/extra/airpods.gen3.case.svg";
+      batteryIcons.left = "icons/devices/apple/extra/airpods.gen3.left.svg";
+      batteryIcons.right = "icons/devices/apple/extra/airpods.gen3.right.svg";
       break;
     case Airpods.Models.Pro:
-      device.icon = { source: "icons/devices/airpods.pro.svg" };
-      batteryIcons.case = "icons/devices/extra/airpods.pro.case.svg";
-      batteryIcons.left = "icons/devices/extra/airpods.pro.left.svg";
-      batteryIcons.right = "icons/devices/extra/airpods.pro.right.svg";
+      device.icon = { source: "icons/devices/apple/airpods.pro.svg" };
+      batteryIcons.case = "icons/devices/apple/extra/airpods.pro.case.svg";
+      batteryIcons.left = "icons/devices/apple/extra/airpods.pro.left.svg";
+      batteryIcons.right = "icons/devices/apple/extra/airpods.pro.right.svg";
       break;
     case Airpods.Models.Max:
-      device.icon = { source: "icons/devices/airpods.max.svg" };
+      device.icon = { source: "icons/devices/apple/airpods.max.svg" };
       batteryIcons.main = "icons/bolt.svg";
       break;
   }

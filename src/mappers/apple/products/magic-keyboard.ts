@@ -10,7 +10,7 @@ function populate(device: Device, deviceData: RawDeviceData) {
     case MagicKeyboard.Models.Standard:
     case MagicKeyboard.Models.Numpad:
     case MagicKeyboard.Models.Fingerprint:
-      device.icon = { source: "icons/devices/keyboard.svg" };
+      device.icon = { source: "icons/devices/generic/keyboard.svg" };
       break;
   }
 

@@ -9,7 +9,7 @@ function populate(device: Device, deviceData: RawDeviceData) {
   switch (device.productId) {
     case MagicMouse.Models[1]:
     case MagicMouse.Models[2]:
-      device.icon = { source: "icons/devices/magic-mouse.svg" };
+      device.icon = { source: "icons/devices/apple/magic-mouse.svg" };
       break;
   }
 

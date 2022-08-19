@@ -16,19 +16,19 @@ export default function mapGenericDevice(deviceData: RawDeviceData): Device {
   let deviceIconPath = undefined;
   switch (deviceModel) {
     case "Keyboard":
-      deviceIconPath = "icons/devices/keyboard.svg";
+      deviceIconPath = "icons/devices/generic/keyboard.svg";
       break;
     case "Mouse":
-      deviceIconPath = "icons/devices/mouse.svg";
+      deviceIconPath = "icons/devices/generic/mouse.svg";
       break;
     case "Headphones":
-      deviceIconPath = "icons/devices/headphones.svg";
+      deviceIconPath = "icons/devices/generic/headphones.svg";
       break;
     case "Speaker":
-      deviceIconPath = "icons/devices/speaker.svg";
+      deviceIconPath = "icons/devices/generic/speaker.svg";
       break;
     default:
-      deviceIconPath = "icons/devices/bluetooth.svg";
+      deviceIconPath = "icons/devices/generic/bluetooth.svg";
       break;
   }
 

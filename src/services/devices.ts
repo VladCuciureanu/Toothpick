@@ -90,8 +90,13 @@ function _mapDevice(deviceData: RawDeviceData): Device {
   }
 
   // Modify icon path to reflect connection state
+  // Not nice but the cleanest solution until a better solution
+  // comes to mind :(
   if (device.connected) {
-    device.icon.source = device.icon.source.toString().replace("icons/devices/", "icons/devices/connected/");
+    const originalIconPath = device.icon.source.toString();
+    const lastSlashIndex = originalIconPath.lastIndexOf("/");
+    device.icon.source =
+      originalIconPath.substring(0, lastSlashIndex) + "/connected/" + originalIconPath.substring(lastSlashIndex + 1);
   }
 
   return device;
