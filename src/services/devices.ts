@@ -14,8 +14,19 @@ export function getDevices(): Device[] {
 export function openConnection(deviceMacAddress: string) {
   const formattedMacAddress = deviceMacAddress.toUpperCase().replaceAll(":", "-");
   const script = readFileSync(resolve(__dirname, "assets/scripts/connectDevice.applescript")).toString();
+  const getFirstMatchingDeviceScript = readFileSync(
+    resolve(__dirname, "assets/scripts/getFirstMatchingDevice.applescript")
+  ).toString();
   const result = runAppleScriptSync(
-    `${script}\n\nreturn connectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
+    `
+    use framework "IOBluetooth"\n
+    use scripting additions\n
+    \n
+    ${getFirstMatchingDeviceScript}\n
+    \n
+    ${script}\n
+    \n
+    return connectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
   );
   if (result !== "0") throw "Failed to connect device.";
 }
@@ -23,8 +34,19 @@ export function openConnection(deviceMacAddress: string) {
 export function closeConnection(deviceMacAddress: string) {
   const formattedMacAddress = deviceMacAddress.toUpperCase().replaceAll(":", "-");
   const script = readFileSync(resolve(__dirname, "assets/scripts/disconnectDevice.applescript")).toString();
+  const getFirstMatchingDeviceScript = readFileSync(
+    resolve(__dirname, "assets/scripts/getFirstMatchingDevice.applescript")
+  ).toString();
   const result = runAppleScriptSync(
-    `${script}\n\nreturn disconnectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
+    `
+    use framework "IOBluetooth"\n
+    use scripting additions\n
+    \n
+    ${getFirstMatchingDeviceScript}\n
+    \n
+    ${script}\n
+    \n
+    return disconnectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
   );
   if (result !== "0") throw "Failed to disconnect device.";
 }

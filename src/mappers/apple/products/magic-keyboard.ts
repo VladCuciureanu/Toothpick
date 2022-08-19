@@ -1,3 +1,4 @@
+import { Color } from "@raycast/api";
 import { Device, RawDeviceData } from "../../../types";
 
 function populate(device: Device, deviceData: RawDeviceData) {
@@ -8,7 +9,11 @@ function populate(device: Device, deviceData: RawDeviceData) {
   // Populate accessories
   if (deviceConnected) {
     const mainBatteryLevel = deviceProperties["device_batteryLevelMain"];
-    device.accessories = [mainBatteryLevel ? { text: mainBatteryLevel, icon: { source: "" } } : {}];
+    device.accessories = [
+      mainBatteryLevel
+        ? { text: mainBatteryLevel, icon: { source: "icons/bolt.svg", tintColor: Color.PrimaryText } }
+        : {},
+    ];
   }
 
   // Populate icon and model

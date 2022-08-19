@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "bluetooth",
   "title": "Bluetooth",
-  "description": "Observe and control Bluetooth devices. Airpods and W1 suite support.",
+  "description": "Observe and control Bluetooth devices.",
   "icon": "logo.png",
   "author": "vladinski",
   "categories": [
