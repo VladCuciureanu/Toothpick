@@ -7,6 +7,7 @@ function populate(device: Device, deviceData: RawDeviceData) {
 
   // Populate icon and model
   switch (device.productId) {
+    case MagicKeyboard.Models.Unknown:
     case MagicKeyboard.Models.Standard:
     case MagicKeyboard.Models.Numpad:
     case MagicKeyboard.Models.Fingerprint:
@@ -31,6 +32,7 @@ function populate(device: Device, deviceData: RawDeviceData) {
 
 const MagicKeyboard = {
   Models: {
+    Unknown: "0x0267",
     Standard: "0x029C",
     Numpad: "0x029F",
     Fingerprint: "0x029A",

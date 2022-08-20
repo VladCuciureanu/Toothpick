@@ -87,6 +87,10 @@ function _mapDevice(deviceData: RawDeviceData): Device {
     case "0x004C": // Apple
       device = mapAppleDevice(device, deviceData);
       break;
+    // case "0x054C":
+    // case "0x54C": // Sony
+    //   device = mapSonyDevice(device, deviceData);
+    //   break;
   }
 
   // Modify icon path to reflect connection state

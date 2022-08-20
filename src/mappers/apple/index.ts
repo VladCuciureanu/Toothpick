@@ -1,5 +1,6 @@
 import { Device, RawDeviceData } from "../../types";
 import Airpods from "./products/airpods";
+import Beats from "./products/beats";
 import MagicKeyboard from "./products/magic-keyboard";
 import MagicMouse from "./products/magic-mouse";
 
@@ -14,6 +15,8 @@ export default function mapAppleDevice(device: Device, rawDeviceData: RawDeviceD
     device = MagicKeyboard.populate(device, rawDeviceData);
   } else if (Object.values(MagicMouse.Models).includes(productId)) {
     device = MagicMouse.populate(device, rawDeviceData);
+  } else if (Object.values(Beats.Models).includes(productId)) {
+    device = Beats.populate(device, rawDeviceData);
   } else {
     return device;
   }
