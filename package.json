@@ -21,6 +21,7 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.38.2",
+    "react": "^18.2.0",
     "run-applescript": "^6.0.0"
   },
   "devDependencies": {
@@ -38,6 +39,5 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "build": "ray build -e dist",
     "publish": "ray publish"
-  },
-  "version": "0.1.0"
+  }
 }

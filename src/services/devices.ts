@@ -60,9 +60,11 @@ function _fetchRawDevicesData(): RawDeviceData[] {
   const rawData: Array<Record<string, RawDeviceData[]>> = JSON.parse(fetchedData)["SPBluetoothDataType"];
 
   // Extract useful data for further processing
-  const untypedConnectedDevices: RawDeviceData[] = rawData.flatMap((controller) => controller["device_connected"]);
-  const untypedDisconnectedDevices: RawDeviceData[] = rawData.flatMap(
-    (controller) => controller["device_not_connected"]
+  const untypedConnectedDevices: RawDeviceData[] = rawData.flatMap((controller) =>
+    controller["device_connected"] ? controller["device_connected"] : []
+  );
+  const untypedDisconnectedDevices: RawDeviceData[] = rawData.flatMap((controller) =>
+    controller["device_not_connected"] ? controller["device_not_connected"] : []
   );
 
   // Inject connection status
