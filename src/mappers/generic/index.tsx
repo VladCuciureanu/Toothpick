@@ -1,4 +1,4 @@
-import { Action, Color, showToast, Toast } from "@raycast/api";
+import { Action, Clipboard, Color, Icon, showToast, Toast } from "@raycast/api";
 import { closeConnection, openConnection } from "src/services/devices";
 import { Device, RawDeviceData } from "../../types";
 
@@ -57,6 +57,18 @@ export default function mapGenericDevice(deviceData: RawDeviceData): Device {
           icon={{ source: "icons/connect.svg", tintColor: Color.PrimaryText }}
         />
       ),
+      <Action
+        title={`Copy Mac Address: ${deviceMacAddress}`}
+        key="copy-mac-address"
+        onAction={() => Clipboard.copy(deviceMacAddress)}
+        icon={Icon.Hammer}
+      />,
+      <Action
+        title={`Copy Device Data`}
+        key="copy-device-data"
+        onAction={() => Clipboard.copy(JSON.stringify(deviceData))}
+        icon={Icon.ComputerChip}
+      />,
     ],
   };
 }
