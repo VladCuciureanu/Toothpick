@@ -1,3 +1,3 @@
-# AirPort Changelog
+# Bluetooth Changelog
 
-## [Initial Version] - 2022-08-16
+## [Initial Version] - 2022-08-21
