@@ -1,10 +1,11 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "bluetooth",
-  "title": "Bluetooth",
-  "description": "Observe and control Bluetooth devices.",
-  "icon": "logo.png",
-  "author": "vladinski",
+  "name": "toothpick",
+  "title": "Toothpick",
+  "description": "Manage Bluetooth connections in Raycast.",
+  "icon": "icon.png",
+  "author": "briankosw",
+  "contributors": ["vladinski"],
   "categories": [
     "Productivity",
     "System"
@@ -12,24 +13,26 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "manage-devices",
-      "title": "Manage Devices",
-      "subtitle": "Bluetooth",
-      "description": "Opens a list of paired bluetooth devices.",
+      "name": "index",
+      "title": "Manage Bluetooth Connections",
+      "subtitle": "Toothpick",
+      "description": "Connect to or disconnect from Bluetooth devices.",
       "mode": "view"
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.38.2",
-    "react": "^18.2.0",
     "run-applescript": "^6.0.0"
   },
   "devDependencies": {
+    "@types/node": "~16.10.0",
+    "@types/react": "^17.0.28",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.5.1",
+    "react-devtools": "^4.19.2",
     "typescript": "^4.4.3"
   },
   "scripts": {

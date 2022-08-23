@@ -29,7 +29,7 @@ export default function ManageDevicesView() {
           subtitle={device.model}
           actions={
             <ActionPanel title={`Actions for ${device.name ? device.name : device.macAddress}`}>
-              {device.actions}
+              <>{device.actions}</>
             </ActionPanel>
           }
         />

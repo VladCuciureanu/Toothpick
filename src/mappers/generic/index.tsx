@@ -92,5 +92,5 @@ const disconnect = (deviceMacAddress: string) => {
     showToast({ style: Toast.Style.Failure, title: "Failed to disconnect." });
     return;
   }
-  showToast({ style: Toast.Style.Success, title: "Device disconnected." });
+  showToast({ style: Toast.Style.Success, title: "Device disconnected successfully." });
 };
