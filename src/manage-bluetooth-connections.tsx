@@ -3,7 +3,7 @@ import { getDevices } from "./services/devices";
 import { useState, useEffect } from "react";
 import { Device } from "./types";
 
-export default function ManageDevicesView() {
+export default function ManageBluetoothConnectionsView() {
   const [loading, setLoading] = useState(true);
   const [devices, setDevices] = useState<Device[]>([]);
 

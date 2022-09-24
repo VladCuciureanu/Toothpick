@@ -1,4 +1,4 @@
-import { Action, Clipboard, Color, Icon, showToast, Toast } from "@raycast/api";
+import { Action, Clipboard, closeMainWindow, Color, getPreferenceValues, Icon, showToast, Toast } from "@raycast/api";
 import { closeConnection, openConnection } from "src/services/devices";
 import { Device, RawDeviceData } from "../../types";
 
@@ -82,6 +82,10 @@ const connect = (deviceMacAddress: string) => {
     return;
   }
   showToast({ style: Toast.Style.Success, title: "Device connected successfully." });
+  const { closeOnSuccessfulConnection } = getPreferenceValues();
+  if (closeOnSuccessfulConnection) {
+    closeMainWindow();
+  }
 };
 
 const disconnect = (deviceMacAddress: string) => {

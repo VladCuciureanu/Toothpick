@@ -13,11 +13,20 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "index",
+      "name": "manage-bluetooth-connections",
       "title": "Manage Bluetooth Connections",
       "subtitle": "Toothpick",
       "description": "Connect to or disconnect from Bluetooth devices.",
       "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "closeOnSuccessfulConnection",
+      "type":"checkbox",
+      "required": true,
+      "label": "Close window after successful connection.",
+      "description": "If checked, Raycast will close after successfully connecting to a device."
     }
   ],
   "dependencies": {
