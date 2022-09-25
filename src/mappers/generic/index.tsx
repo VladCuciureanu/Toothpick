@@ -1,6 +1,6 @@
-import { Action, Clipboard, closeMainWindow, Color, getPreferenceValues, Icon, showToast, Toast } from "@raycast/api";
-import { closeConnection, openConnection } from "src/services/devices";
-import { Device, RawDeviceData } from "../../types";
+import { Action, Clipboard, Color, Icon } from "@raycast/api";
+import { connectDevice, disconnectDevice } from "src/helpers/devices";
+import { Device, RawDeviceData } from "../../libs/types";
 
 export default function mapGenericDevice(deviceData: RawDeviceData): Device {
   // Extract useful data
@@ -46,14 +46,14 @@ export default function mapGenericDevice(deviceData: RawDeviceData): Device {
         <Action
           title="Disconnect"
           key="disconnect-action"
-          onAction={() => disconnect(deviceMacAddress)}
+          onAction={() => disconnectDevice(deviceMacAddress)}
           icon={{ source: "icons/disconnect.svg", tintColor: Color.PrimaryText }}
         />
       ) : (
         <Action
           title="Connect"
           key="connect-action"
-          onAction={() => connect(deviceMacAddress)}
+          onAction={() => connectDevice(deviceMacAddress)}
           icon={{ source: "icons/connect.svg", tintColor: Color.PrimaryText }}
         />
       ),
@@ -72,29 +72,3 @@ export default function mapGenericDevice(deviceData: RawDeviceData): Device {
     ],
   };
 }
-
-const connect = (deviceMacAddress: string) => {
-  showToast({ style: Toast.Style.Animated, title: "Connecting..." });
-  try {
-    openConnection(deviceMacAddress);
-  } catch (error) {
-    showToast({ style: Toast.Style.Failure, title: "Failed to connect." });
-    return;
-  }
-  showToast({ style: Toast.Style.Success, title: "Device connected successfully." });
-  const { closeOnSuccessfulConnection } = getPreferenceValues();
-  if (closeOnSuccessfulConnection) {
-    closeMainWindow();
-  }
-};
-
-const disconnect = (deviceMacAddress: string) => {
-  showToast({ style: Toast.Style.Animated, title: "Disconnecting..." });
-  try {
-    closeConnection(deviceMacAddress);
-  } catch {
-    showToast({ style: Toast.Style.Failure, title: "Failed to disconnect." });
-    return;
-  }
-  showToast({ style: Toast.Style.Success, title: "Device disconnected successfully." });
-};

@@ -2,7 +2,7 @@ import mapAppleDevice from "../mappers/apple";
 import mapGenericDevice from "../mappers/generic";
 import { readFileSync } from "fs";
 import { runAppleScriptSync } from "run-applescript";
-import { Device, RawDeviceData } from "../types";
+import { Device, RawDeviceData } from "../libs/types";
 import { resolve } from "path";
 
 export function getDevices(): Device[] {
@@ -52,7 +52,7 @@ export function closeConnection(deviceMacAddress: string) {
 }
 
 function _fetchRawDevicesData(): RawDeviceData[] {
-  // Fetch bluetooth data
+  // Fetch Bluetooth data
   const script = readFileSync(resolve(__dirname, "assets/scripts/getAllDevices.applescript")).toString();
   const fetchedData = runAppleScriptSync(`${script}`);
 
