@@ -71,6 +71,9 @@ function _fetchRawDevicesData(): RawDeviceData[] {
   untypedConnectedDevices.forEach((device) => _injectConnectionStatus(device, true));
   untypedDisconnectedDevices.forEach((device) => _injectConnectionStatus(device, false));
 
+  // Inject additional battery data from 'ioreg'
+  untypedConnectedDevices.forEach((device) => _injectIoRegBatteryLevel(device));
+
   // Merge all devices into one array
   return [...untypedConnectedDevices, ...untypedDisconnectedDevices];
 }
@@ -78,6 +81,32 @@ function _fetchRawDevicesData(): RawDeviceData[] {
 function _injectConnectionStatus(device: RawDeviceData, isConnected: boolean) {
   const deviceName = Object.keys(device)[0];
   device[deviceName]["device_connected"] = isConnected ? "true" : "false";
+}
+
+function _injectIoRegBatteryLevel(device: RawDeviceData) {
+  const deviceName = Object.keys(device)[0];
+  const deviceMacAddress = device[deviceName]["device_address"].replaceAll(":", "-");
+
+  if (device[deviceName]["device_batteryLevelMain"]) {
+    return;
+  }
+
+  const scriptOutput = runAppleScriptSync(
+    `do shell script "/usr/sbin/ioreg -a -c AppleDeviceManagementHIDEventService"`
+  );
+
+  const deviceRegex = new RegExp(`<dict>[\\S\\s]+<string>${deviceMacAddress}<\\/string>[\\S\\s]+<\\/dict>`, "gi");
+  const deviceData = deviceRegex.exec(scriptOutput)?.at(0);
+  if (deviceData !== undefined) {
+    const batteryLevelRegex = new RegExp(
+      `(?:<key>BatteryPercent<\\/key>\\s+<integer>)(\\d?\\d\\d)(?:<\\/integer>)`,
+      "gi"
+    );
+    const batteryLevel = batteryLevelRegex.exec(deviceData)?.at(1);
+    if (batteryLevel !== undefined) {
+      device[deviceName]["device_batteryLevelMain"] = `${batteryLevel}%`;
+    }
+  }
 }
 
 function _mapDevice(deviceData: RawDeviceData): Device {
