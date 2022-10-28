@@ -3,6 +3,7 @@ import Airpods from "./products/airpods";
 import Beats from "./products/beats";
 import MagicKeyboard from "./products/magic-keyboard";
 import MagicMouse from "./products/magic-mouse";
+import MagicTrackpad from "./products/magic-trackpad";
 
 export default function mapAppleDevice(device: Device, rawDeviceData: RawDeviceData): Device {
   // Ensuring type safety
@@ -15,6 +16,8 @@ export default function mapAppleDevice(device: Device, rawDeviceData: RawDeviceD
     device = MagicKeyboard.populate(device, rawDeviceData);
   } else if (Object.values(MagicMouse.Models).includes(productId)) {
     device = MagicMouse.populate(device, rawDeviceData);
+  } else if (Object.values(MagicTrackpad.Models).includes(productId)) {
+    device = MagicTrackpad.populate(device, rawDeviceData);
   } else if (Object.values(Beats.Models).includes(productId)) {
     device = Beats.populate(device, rawDeviceData);
   } else {

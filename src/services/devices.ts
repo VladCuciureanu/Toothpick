@@ -85,26 +85,38 @@ function _injectConnectionStatus(device: RawDeviceData, isConnected: boolean) {
 
 function _injectIoRegBatteryLevel(device: RawDeviceData) {
   const deviceName = Object.keys(device)[0];
-  const deviceMacAddress = device[deviceName]["device_address"].replaceAll(":", "-");
+  const deviceMacAddress = device[deviceName]["device_address"].replaceAll(":", "-").toLowerCase();
 
   if (device[deviceName]["device_batteryLevelMain"]) {
     return;
   }
 
   const scriptOutput = runAppleScriptSync(
-    `do shell script "/usr/sbin/ioreg -a -c AppleDeviceManagementHIDEventService"`
+    `do shell script "/usr/sbin/ioreg -c AppleDeviceManagementHIDEventService | grep -e BatteryPercent -e DeviceAddress"`
   );
 
-  const deviceRegex = new RegExp(`<dict>[\\S\\s]+<string>${deviceMacAddress}<\\/string>[\\S\\s]+<\\/dict>`, "gi");
-  const deviceData = deviceRegex.exec(scriptOutput)?.at(0);
-  if (deviceData !== undefined) {
-    const batteryLevelRegex = new RegExp(
-      `(?:<key>BatteryPercent<\\/key>\\s+<integer>)(\\d?\\d\\d)(?:<\\/integer>)`,
-      "gi"
-    );
-    const batteryLevel = batteryLevelRegex.exec(deviceData)?.at(1);
-    if (batteryLevel !== undefined) {
-      device[deviceName]["device_batteryLevelMain"] = `${batteryLevel}%`;
+  const addressBatteryPair = scriptOutput
+    .split("\r")
+    .filter((x) => x.match("(DeviceAddress)|(BatteryPercent)"))
+    .map((x) => {
+      const matches = /"([A-z]+)"[\s=]+(["\- A-z0-9]+)/.exec(x);
+      if (matches) {
+        return [matches[1], matches[2].replace('"', "").replace('"', "")];
+      } else {
+        return ["", ""];
+      }
+    });
+
+  for (let i = 0; i < addressBatteryPair.length - 1; i++) {
+    if (addressBatteryPair[i][0] === "DeviceAddress" && addressBatteryPair[i][1] === deviceMacAddress) {
+      if (addressBatteryPair[i + 1][0] === "BatteryPercent") {
+        const batteryLevel = addressBatteryPair[i + 1][1];
+        if (batteryLevel !== undefined) {
+          device[deviceName]["device_batteryLevelMain"] = `${batteryLevel}%`;
+        }
+      } else {
+        return;
+      }
     }
   }
 }

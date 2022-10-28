@@ -1,5 +1,5 @@
 import { Action, Clipboard, Color, Icon } from "@raycast/api";
-import { connectDevice, disconnectDevice } from "src/helpers/devices";
+import { connectDevice, disconnectDevice } from "src/helpers/device-actions";
 import { Device, RawDeviceData } from "../../libs/types";
 
 export default function mapGenericDevice(deviceData: RawDeviceData): Device {
@@ -26,6 +26,9 @@ export default function mapGenericDevice(deviceData: RawDeviceData): Device {
       break;
     case "Speaker":
       deviceIconPath = "icons/devices/generic/speaker.svg";
+      break;
+    case "Gamepad":
+      deviceIconPath = "icons/devices/generic/gamepad.svg";
       break;
     default:
       deviceIconPath = "icons/devices/generic/bluetooth.svg";

@@ -1,6 +1,6 @@
 import { getPreferenceValues, showToast, Toast } from "@raycast/api";
 import { ratio } from "fuzzball";
-import { connectDevice } from "./helpers/devices";
+import { connectDevice } from "./helpers/device-actions";
 import { getDevices } from "./services/devices";
 
 export default async (props: { arguments: { nameOrMacAddress: string } }) => {
