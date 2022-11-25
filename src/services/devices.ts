@@ -46,7 +46,7 @@ export function closeConnection(deviceMacAddress: string) {
     \n
     ${script}\n
     \n
-    return disconnectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
+    disconnectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
   );
   if (result !== "0") throw "Failed to disconnect device.";
 }
@@ -91,9 +91,14 @@ function _injectIoRegBatteryLevel(device: RawDeviceData) {
     return;
   }
 
-  const scriptOutput = runAppleScriptSync(
-    `do shell script "/usr/sbin/ioreg -c AppleDeviceManagementHIDEventService | grep -e BatteryPercent -e DeviceAddress"`
-  );
+  let scriptOutput = "";
+  try {
+    scriptOutput = runAppleScriptSync(
+      `do shell script "/usr/sbin/ioreg -c AppleDeviceManagementHIDEventService | grep -e BatteryPercent -e DeviceAddress"`
+    );
+  } catch {
+    return;
+  }
 
   const addressBatteryPair = scriptOutput
     .split("\r")
