@@ -1,5 +1,14 @@
 # Toothpick Changelog
 
+## [Partial Device Support Additions] - 2022-12-04
+
+- Added rudimentary mappings for the following devices:
+  - AirPods Pro 2 (custom icon)
+  - Samsung Galaxy Buds Live (custom icon)
+  - Bose Quiet Comfort 35 II
+  - Sony WH-1000XM4
+  - UGREEN HiTune X6 (custom icon and battery level)
+
 ## [QOL Improvements] - 2022-09-25
 
 - Added 'Connect to' and 'Disconnect from' commands

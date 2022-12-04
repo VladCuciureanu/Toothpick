@@ -2,8 +2,12 @@ import mapAppleDevice from "../mappers/apple";
 import mapGenericDevice from "../mappers/generic";
 import { readFileSync } from "fs";
 import { runAppleScriptSync } from "run-applescript";
-import { Device, RawDeviceData } from "../libs/types";
+import { Device, RawDeviceData } from "../types";
 import { resolve } from "path";
+import mapSonyDevice from "src/mappers/sony";
+import mapBoseDevice from "src/mappers/bose";
+import mapSamsungDevice from "src/mappers/samsung";
+import mapUgreenDevice from "src/mappers/ugreen";
 
 export function getDevices(): Device[] {
   const devicesData = _fetchRawDevicesData();
@@ -132,13 +136,21 @@ function _mapDevice(deviceData: RawDeviceData): Device {
 
   // Map device by vendor
   switch (device.vendorId) {
-    case "0x004C": // Apple
+    case "0x004C":
       device = mapAppleDevice(device, deviceData);
       break;
-    // case "0x054C":
-    // case "0x54C": // Sony
-    //   device = mapSonyDevice(device, deviceData);
-    //   break;
+    case "0x054C":
+      device = mapSonyDevice(device);
+      break;
+    case "0x009E":
+      device = mapBoseDevice(device);
+      break;
+    case "0x0075":
+      device = mapSamsungDevice(device);
+      break;
+    case "0x005D":
+      device = mapUgreenDevice(device, deviceData);
+      break;
   }
 
   // Modify icon path to reflect connection state

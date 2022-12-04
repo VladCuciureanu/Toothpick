@@ -1,17 +1,20 @@
 import { Color } from "@raycast/api";
-import { Device, RawDeviceData } from "../../../types";
+import { Device, RawDeviceData } from "src/types";
 
 function populate(device: Device, deviceData: RawDeviceData) {
   // Extract properties for easier access
   const deviceProperties = deviceData[device.name];
 
+  // Prepare structure for accessories battery icons
+  const batteryIcons: { main: string } = {
+    main: "",
+  };
+
   // Populate icon and model
   switch (device.productId) {
-    case MagicKeyboard.Models.Unknown:
-    case MagicKeyboard.Models.Standard:
-    case MagicKeyboard.Models.Numpad:
-    case MagicKeyboard.Models.Fingerprint:
-      device.icon = { source: "icons/devices/generic/keyboard.svg" };
+    case UgreenProducts.Models.HiTuneX6:
+      device.icon = { source: "icons/devices/ugreen/hitune.x6.svg" };
+      batteryIcons.main = "icons/bolt.svg";
       break;
   }
 
@@ -21,7 +24,7 @@ function populate(device: Device, deviceData: RawDeviceData) {
     if (mainBatteryLevel) {
       device.accessories.push({
         text: mainBatteryLevel,
-        icon: { source: "icons/bolt.svg", tintColor: Color.PrimaryText },
+        icon: { source: batteryIcons.main, tintColor: Color.PrimaryText },
       });
     }
   }
@@ -30,14 +33,11 @@ function populate(device: Device, deviceData: RawDeviceData) {
   return device;
 }
 
-const MagicKeyboard = {
+const UgreenProducts = {
   Models: {
-    Unknown: "0x0267",
-    Standard: "0x029C",
-    Numpad: "0x029F",
-    Fingerprint: "0x029A",
+    HiTuneX6: "0x223B",
   },
   populate,
 };
 
-export default MagicKeyboard;
+export default UgreenProducts;
