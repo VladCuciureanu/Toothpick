@@ -6,7 +6,7 @@ import { getDevices } from "./services/devices";
 export default async (props: { arguments: { nameOrMacAddress: string } }) => {
   const { fuzzyRatio } = getPreferenceValues();
   if (isNaN(parseFloat(fuzzyRatio))) {
-    showToast({ style: Toast.Style.Failure, title: "Invalid fuzzy ratio. Check extension preferences." });
+    await showToast({ style: Toast.Style.Failure, title: "Invalid fuzzy ratio. Check extension preferences." });
     return;
   }
 
@@ -18,7 +18,7 @@ export default async (props: { arguments: { nameOrMacAddress: string } }) => {
   );
 
   if (device === undefined) {
-    showToast({ style: Toast.Style.Failure, title: "Device not found." });
+    await showToast({ style: Toast.Style.Failure, title: "Device not found." });
   } else {
     connectDevice(device.macAddress);
   }

@@ -1,5 +1,9 @@
 # Toothpick Changelog
 
+## [Toast Status Fix] - 2022-12-12
+
+- Fixed an issue where the 'Connecting...' toast status would not show up
+
 ## [Partial Device Support Additions] - 2022-12-04
 
 - Added rudimentary mappings for the following devices:
