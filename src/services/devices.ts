@@ -140,7 +140,7 @@ function _mapDevice(deviceData: RawDeviceData): Device {
       device = mapAppleDevice(device, deviceData);
       break;
     case "0x054C":
-      device = mapSonyDevice(device);
+      device = mapSonyDevice(device, deviceData);
       break;
     case "0x009E":
       device = mapBoseDevice(device);

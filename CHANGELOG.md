@@ -1,5 +1,11 @@
 # Toothpick Changelog
 
+## [Partial Device Support Additions] - 2022-12-13
+
+- Added rudimentary mappings for the following devices:
+  - Sony WH-1000XM3 (battery level)
+  - Older Apple Magic Keyboards
+
 ## [Toast Status Fix] - 2022-12-12
 
 - Fixed an issue where the 'Connecting...' toast status would not show up
@@ -10,7 +16,7 @@
   - AirPods Pro 2 (custom icon)
   - Samsung Galaxy Buds Live (custom icon)
   - Bose Quiet Comfort 35 II
-  - Sony WH-1000XM4
+  - Sony WH-1000XM4 (battery level)
   - UGREEN HiTune X6 (custom icon and battery level)
 
 ## [QOL Improvements] - 2022-09-25
