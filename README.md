@@ -51,7 +51,6 @@ If you have any of the devices below <i>or</i> wish to have any unlisted device 
 
 ### Wanted devices
 - Sony WF-1000XM4
-- Sony WH-1000XM4
 - Beats X
 - Beats Solo 3
 - Beats Solo Pro
