@@ -50,7 +50,7 @@ If you have any of the devices below <i>or</i> wish to have any unlisted device 
 7. Profit
 
 ### Wanted devices
-- Sony WF-1000XM4
+- Sony WF-1000XM3
 - Beats X
 - Beats Solo 3
 - Beats Solo Pro
