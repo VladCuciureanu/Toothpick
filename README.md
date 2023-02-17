@@ -4,11 +4,11 @@
 </p>
 
 <p align="center">
-  <a aria-label="Follow me on Twitter" href="https://twitter.com/briankosw">
-    <img alt="" src="https://img.shields.io/badge/Follow%20@briankosw-black.svg?style=for-the-badge&logo=Twitter">
-  </a>
   <a aria-label="Follow me on Twitter" href="https://twitter.com/VladCuciureanu_">
     <img alt="" src="https://img.shields.io/badge/Follow%20@VladCuciureanu-black.svg?style=for-the-badge&logo=Twitter">
+  </a>
+  <a aria-label="Follow me on Twitter" href="https://twitter.com/briankosw">
+    <img alt="" src="https://img.shields.io/badge/Follow%20@briankosw-black.svg?style=for-the-badge&logo=Twitter">
   </a>
 </p>
 
