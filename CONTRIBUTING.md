@@ -1,5 +1,8 @@
 # Contributing
 
+When contributing, please commit _only_ to the [external repository](https://github.com/VladCuciureanu/Toothpick.git) to prevent potential confusion and
+commit conflicts. Thanks for your understanding.
+
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change.
 
