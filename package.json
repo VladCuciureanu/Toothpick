@@ -13,11 +13,12 @@
   },
   "scripts": {
     "dev": "ray develop",
+    "build": "ray build -e dist",
+    "publish": "ray publish",
     "lint": "ray lint",
     "fix-lint": "ray lint --fix",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "build": "ray build -e dist",
-    "publish": "ray publish"
+    "svg:optimize": "find assets/icons/devices -type f -name '*.svg' -print0 | xargs -0 -n 1 -P 6 svgo"
   },
   "dependencies": {
     "@raycast/api": "^1.38.2",
@@ -33,6 +34,7 @@
     "eslint-config-prettier": "^8.3.0",
     "prettier": "^2.5.1",
     "react-devtools": "^4.19.2",
+    "svgo": "^3.0.2",
     "typescript": "^4.4.3"
   },
   "commands": [
