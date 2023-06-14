@@ -4,6 +4,7 @@ import GoogleDevices from "./google";
 import JabraDevices from "./jabra";
 import LogitechDevices from "./logitech";
 import SamsungDevices from "./samsung";
+import SennheiserDevices from "./sennheiser";
 import SonyDevices from "./sony";
 import UgreenDevices from "./ugreen";
 import { DeviceDefinition } from "src/types/device";
@@ -15,6 +16,7 @@ export const DevicesMap: Record<string, Record<string, DeviceDefinition>> = {
   "0x0067": JabraDevices,
   "0x046D": LogitechDevices,
   "0x0075": SamsungDevices,
+  "0x0082": SennheiserDevices,
   "0x054C": SonyDevices,
   "0x005D": UgreenDevices,
 };
