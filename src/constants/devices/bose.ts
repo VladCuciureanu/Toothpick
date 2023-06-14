@@ -1,13 +1,12 @@
-const devices: Record<string, Record<string, string>> = {
-  // QC35 II
+import { DeviceDefinition } from "src/types/device";
+
+export default {
   "0x4020": {
+    name: "Bose QuietComfort 35 II",
     main: "icons/devices/bose/qc.35.svg",
   },
-  // QC35
   "0x400C": {
+    name: "Bose QuietComfort 35",
     main: "icons/devices/bose/qc.35.svg",
-
-  }
-};
-
-export default devices;
+  },
+} as Record<string, DeviceDefinition>;
