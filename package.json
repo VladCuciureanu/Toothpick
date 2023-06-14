@@ -17,8 +17,8 @@
     "publish": "ray publish",
     "lint": "ray lint",
     "fix-lint": "ray lint --fix",
-    "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "svg:optimize": "find assets/icons/devices -type f -name '*.svg' -print0 | xargs -0 -n 1 -P 6 svgo"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx}\" --no-error-on-unmatched-pattern",
+    "svg:optimize": "find assets -type f -name '*.svg' -print0 | xargs -0 -n 1 -P 6 svgo"
   },
   "dependencies": {
     "@raycast/api": "^1.38.2",

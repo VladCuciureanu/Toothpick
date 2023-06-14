@@ -4,5 +4,17 @@ module.exports = {
     indent: 2,
     pretty: true,
   },
-  plugins: ["preset-default"],
+  plugins: [
+    {
+      name: "preset-default",
+      params: {
+        overrides: {
+          inlineStyles: {
+            onlyMatchedOnce: false,
+          },
+        },
+      },
+    },
+    "convertStyleToAttrs",
+  ],
 };
