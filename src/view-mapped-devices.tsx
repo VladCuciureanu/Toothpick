@@ -1,21 +1,33 @@
-import { Color, List } from "@raycast/api";
+import { Action, ActionPanel, Color, Icon, List } from "@raycast/api";
 import { DevicesMap } from "./constants/devices";
+import { useState } from "react";
 
 export default function SupportedDevicesView() {
-  const devices = Object.entries(DevicesMap).flatMap(([k, v]) => Object.entries(v));
+  const [mockConnectionStatus, setMockConnectionStatus] = useState(false);
+  const devices = Object.entries(DevicesMap).flatMap(([, v]) => Object.entries(v));
+
   return (
     <List>
-      {devices.map(([id, metadata]) => (
-        <List.Item
-          key={id}
-          icon={
-            metadata.main
-              ? { source: metadata.main, tintColor: { adjustContrast: true, light: Color.Blue, dark: "#F00" } }
-              : undefined
-          }
-          title={metadata.name ?? "Missing name"}
-        />
-      ))}
+      <List.Item
+        icon={{ source: Icon.Power, tintColor: Color.PrimaryText }}
+        title={"Toggle mocked connection state"}
+        actions={
+          <ActionPanel title="Yeet">
+            <Action title={"Toggle"} onAction={() => setMockConnectionStatus(!mockConnectionStatus)} />
+          </ActionPanel>
+        }
+      />
+      {devices.map(([id, metadata]) => {
+        const iconPath = mockConnectionStatus ? metadata.main?.replace(/\/(?=[^\/]*$)/, "/connected/") : metadata.main;
+
+        return (
+          <List.Item
+            key={id}
+            icon={iconPath ? { source: iconPath } : undefined}
+            title={metadata.name ?? "Missing name"}
+          />
+        );
+      })}
     </List>
   );
 }
