@@ -22,20 +22,23 @@ Connecting to your Bluetooth devices has never been faster :)
 Visit this extension's [store page](https://www.raycast.com/VladCuciureanu/Toothpick) to get started.  
 After installing, follow the instructions on screen, and you should be good to go!
 
+## Setting up favorite devices
+
+1. Go to the extension's settings
+2. Enable the desired number of favorite device commands
+3. Ensure "Toothpick" (the extension) is highlighted (and not a command)
+4. Write your device's name in the corresponding preference field.
+
+You should now be able to connect to your device of choice via the configured commands.
+
 ## Feedback
 
 A lot of workarounds were used to implement many of the core functionalities.  
 Not to mention that this extension was also a whim project. So, I would be  
 happy to hear what you think of it and how it could be improved upon.
 
-<div align="center">
-  <a title="Request Feature" aria-label="Request Feature" href="https://github.com/raycast/extensions/issues/new?assignees=&labels=extension%2Cfeature+request&template=extension_feature_request.yml&title=%5BToothpick%5D+...&extension-url=https://www.raycast.com/VladCuciureanu/Toothpick">
-    <img src="https://img.shields.io/badge/Request%20Feature-black.svg?style=for-the-badge">
-  </a>
-  <a title="Report Bug" aria-label="Report Bug" href="https://github.com/raycast/extensions/issues/new?assignees=&labels=extension%2Cbug&template=extension_bug_report.yml&title=%5BToothpick%5D+...&extension-url=https://www.raycast.com/VladCuciureanu/Toothpick">
-    <img src="https://img.shields.io/badge/Report%20Bug-black.svg?style=for-the-badge">
-  </a>
-</div>
+- [Request Feature](https://github.com/raycast/extensions/issues/new?assignees=&labels=extension%2Cfeature+request&template=extension_feature_request.yml&title=%5BToothpick%5D+...&extension-url=https://www.raycast.com/VladCuciureanu/Toothpick)
+- [Report Bug](https://github.com/raycast/extensions/issues/new?assignees=&labels=extension%2Cbug&template=extension_bug_report.yml&title=%5BToothpick%5D+...&extension-url=https://www.raycast.com/VladCuciureanu/Toothpick)
 
 ## Contributing
 
@@ -56,7 +59,6 @@ supported, all you need to do is:
 
 - Beats X
 - Beats Solo 3
-- Beats Solo Pro
 - Beats Powerbeats
 - Beats Powerbeats 3
 - Beats Powerbeats Pro
