@@ -1,8 +1,8 @@
 import { resolve } from "path";
 import { readFileSync } from "fs";
 import { runAppleScriptSync } from "run-applescript";
-import { Device, RawDeviceData } from "../types/device";
-import { mapDevice } from "../mappers/devices";
+import { Device, RawDeviceData } from "./devices.types";
+import { mapDevice } from "./devices.mapper";
 
 export function getDevices(): Device[] {
   const devicesData = _fetchRawDevicesData();
@@ -20,10 +20,10 @@ function _fetchRawDevicesData(): RawDeviceData[] {
 
   // Extract useful data for further processing
   const untypedConnectedDevices: RawDeviceData[] = rawData.flatMap((controller) =>
-    controller["device_connected"] ? controller["device_connected"] : []
+    controller["device_connected"] ? controller["device_connected"] : [],
   );
   const untypedDisconnectedDevices: RawDeviceData[] = rawData.flatMap((controller) =>
-    controller["device_not_connected"] ? controller["device_not_connected"] : []
+    controller["device_not_connected"] ? controller["device_not_connected"] : [],
   );
 
   // Inject connection status
@@ -53,7 +53,7 @@ function _injectIoRegBatteryLevel(device: RawDeviceData) {
   let scriptOutput = "";
   try {
     scriptOutput = runAppleScriptSync(
-      `do shell script "/usr/sbin/ioreg -c AppleDeviceManagementHIDEventService | grep -e BatteryPercent -e DeviceAddress"`
+      `do shell script "/usr/sbin/ioreg -c AppleDeviceManagementHIDEventService | grep -e BatteryPercent -e DeviceAddress"`,
     );
   } catch {
     return;

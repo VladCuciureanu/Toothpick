@@ -1,5 +1,5 @@
 import { showToast, Toast, getPreferenceValues, closeMainWindow } from "@raycast/api";
-import { Device } from "src/types/device";
+import { Device } from "src/core/devices.types";
 
 export async function connectDevice(device: Device) {
   await showToast({ style: Toast.Style.Animated, title: "Connecting..." });

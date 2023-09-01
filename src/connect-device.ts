@@ -1,7 +1,7 @@
 import { getPreferenceValues, showToast, Toast } from "@raycast/api";
 import { ratio } from "fuzzball";
 import { connectDevice } from "./helpers/devices";
-import { getDevices } from "./services/devices";
+import { getDevices } from "./core/devices.service";
 
 export default async (props: { arguments: { nameOrMacAddress: string } }) => {
   const { fuzzyRatio } = getPreferenceValues();
@@ -14,7 +14,7 @@ export default async (props: { arguments: { nameOrMacAddress: string } }) => {
   const device = devices.find(
     (device) =>
       ratio(device.name, props.arguments.nameOrMacAddress) > fuzzyRatio ||
-      device.macAddress === props.arguments.nameOrMacAddress
+      device.macAddress === props.arguments.nameOrMacAddress,
   );
 
   if (device === undefined) {

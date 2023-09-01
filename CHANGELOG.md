@@ -1,5 +1,9 @@
 # Toothpick Changelog
 
+## [] - 2023-09-01
+
+- Updated dependencies
+
 ## [QoL Improvements and Device Additions] - 2023-06-14
 
 - Added rudimentary mappings for the following devices:

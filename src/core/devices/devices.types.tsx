@@ -3,7 +3,7 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { ReactNode } from "react";
 import { runAppleScriptSync } from "run-applescript";
-import { DevicesMap } from "src/constants/devices";
+import { DevicesMap } from "src/core/devices/constants/specifications";
 import { connectDevice, disconnectDevice } from "src/helpers/devices";
 
 export class Device {
@@ -54,7 +54,7 @@ export class Device {
     const formattedMacAddress = this.macAddress.toUpperCase().replaceAll(":", "-");
     const script = readFileSync(resolve(__dirname, "assets/scripts/connectDevice.applescript")).toString();
     const getFirstMatchingDeviceScript = readFileSync(
-      resolve(__dirname, "assets/scripts/getFirstMatchingDevice.applescript")
+      resolve(__dirname, "assets/scripts/getFirstMatchingDevice.applescript"),
     ).toString();
     const result = runAppleScriptSync(
       `
@@ -65,7 +65,7 @@ export class Device {
       \n
       ${script}\n
       \n
-      return connectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
+      return connectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`,
     );
     if (result !== "0") throw "Failed to connect device.";
   }
@@ -74,7 +74,7 @@ export class Device {
     const formattedMacAddress = this.macAddress.toUpperCase().replaceAll(":", "-");
     const script = readFileSync(resolve(__dirname, "assets/scripts/disconnectDevice.applescript")).toString();
     const getFirstMatchingDeviceScript = readFileSync(
-      resolve(__dirname, "assets/scripts/getFirstMatchingDevice.applescript")
+      resolve(__dirname, "assets/scripts/getFirstMatchingDevice.applescript"),
     ).toString();
     const result = runAppleScriptSync(
       `
@@ -85,7 +85,7 @@ export class Device {
       \n
       ${script}\n
       \n
-      disconnectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`
+      disconnectDevice(getFirstMatchingDevice("${formattedMacAddress}"))`,
     );
     if (result !== "0") throw "Failed to disconnect device.";
   }
