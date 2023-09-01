@@ -27,7 +27,26 @@ export default class BlueutilDevicesService extends ApplescriptDevicesService {
   }
 
   getDevices(): Device[] {
-    return super.getDevices();
+    const applescriptDevices = super.getDevices();
+    try {
+      const blueutilOutput = JSON.parse(
+        execSync(`blueutil --paired --format json`, {
+          env: this.envVars,
+        }).toString(),
+      );
+
+      const blueutilDevicesMacAddresses = blueutilOutput.map((entry: { address: string }) =>
+        entry.address.replaceAll("-", ":").toUpperCase(),
+      );
+
+      const devices = applescriptDevices.filter((device) =>
+        blueutilDevicesMacAddresses.includes(device.macAddress.toUpperCase()),
+      );
+
+      return devices;
+    } catch {
+      return applescriptDevices;
+    }
   }
 
   connectDevice(mac: string): boolean {

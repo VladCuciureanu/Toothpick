@@ -1,7 +1,8 @@
 # Toothpick Changelog
 
-## [] - 2023-09-01
+## [Blueutil Bluetooth Backend] - 2023-09-01
 
+- Added 'blueutil' as experimental Bluetooth backend
 - Updated dependencies
 
 ## [QoL Improvements and Device Additions] - 2023-06-14

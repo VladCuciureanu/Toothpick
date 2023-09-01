@@ -18,7 +18,7 @@ export function getDevicesService(serviceType?: ServiceType): DevicesService {
       case ServiceType.AppleScript:
         devicesService = new ApplescriptDevicesService();
         break;
-      case ServiceType.blueutil:
+      case ServiceType.Blueutil:
         devicesService = new BlueutilDevicesService();
         break;
     }
@@ -28,5 +28,5 @@ export function getDevicesService(serviceType?: ServiceType): DevicesService {
 
 enum ServiceType {
   AppleScript = "applescript",
-  blueutil = "blueutil",
+  Blueutil = "blueutil",
 }
