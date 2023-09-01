@@ -98,7 +98,7 @@
     },
     {
       "name": "view-mapped-devices",
-      "title": "[Dev] View mapped Devices",
+      "title": "View mapped devices",
       "subtitle": "Toothpick",
       "description": "A list of all mapped devices. Used for development.",
       "mode": "view",
@@ -113,6 +113,24 @@
       "title": "Fuzzy Ratio",
       "description": "Minimum difference ratio for matching a device name.",
       "default": "98"
+    },
+    {
+      "name": "bluetoothBackend",
+      "type": "dropdown",
+      "required": true,
+      "title": "Bluetooth Backend",
+      "description": "What tool Toothpick will use for Bluetooth related actions.",
+      "default": "Applescript",
+      "data": [
+        {
+          "title": "AppleScript",
+          "value": "applescript"
+        },
+        {
+          "title": "blueutil (Experimental)",
+          "value": "blueutil"
+        }
+      ]
     },
     {
       "name": "favoriteDevice1",
