@@ -18,7 +18,7 @@ export default function SupportedDevicesView() {
         }
       />
       {devices.map(([id, metadata]) => {
-        const iconPath = mockConnectionStatus ? metadata.main?.replace(/\/(?=[^\/]*$)/, "/connected/") : metadata.main;
+        const iconPath = mockConnectionStatus ? metadata.main?.replace(/\/(?=[^/]*$)/, "/connected/") : metadata.main;
 
         return (
           <List.Item
