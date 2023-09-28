@@ -16,7 +16,7 @@ export default async (props: { arguments: { nameOrMacAddress: string } }) => {
   const device = devices.find(
     (device) =>
       ratio(device.name, props.arguments.nameOrMacAddress) > fuzzyRatio ||
-      device.macAddress === props.arguments.nameOrMacAddress,
+      device.macAddress === props.arguments.nameOrMacAddress
   );
 
   if (device === undefined) {
