@@ -5,7 +5,8 @@
   "description": "Manage Bluetooth connections in Raycast.",
   "author": "VladCuciureanu",
   "contributors": [
-    "briankosw"
+    "briankosw",
+    "oranja"
   ],
   "repository": {
     "type": "git",
