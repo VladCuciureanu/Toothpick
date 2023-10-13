@@ -6,7 +6,8 @@
   "author": "VladCuciureanu",
   "contributors": [
     "briankosw",
-    "oranja"
+    "oranja",
+    "sxn"
   ],
   "repository": {
     "type": "git",
@@ -119,10 +120,10 @@
     {
       "name": "bluetoothBackend",
       "type": "dropdown",
-      "required": true,
+      "required": false,
       "title": "Bluetooth Backend",
       "description": "What tool Toothpick will use for Bluetooth related actions.",
-      "default": "Applescript",
+      "default": "applescript",
       "data": [
         {
           "title": "AppleScript",
