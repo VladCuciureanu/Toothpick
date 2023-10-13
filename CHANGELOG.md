@@ -1,9 +1,10 @@
 # Toothpick Changelog
 
-## [Device Addition] - 2023-10-13
+## [QoL Improvements and Device Additions] - 2023-10-13
 
 - Added rudimentary mappings for the following devices:
   - Samsung Galaxy Buds+ (custom icon)
+- Added the option to provide a custom 'blueutil' directory
 
 ## [QoL Improvement] - 2023-10-05
 

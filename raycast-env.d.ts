@@ -8,10 +8,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 type ExtensionPreferences = {
-  /** Fuzzy Ratio - Minimum difference ratio for matching a device name. */
+  /** Device Name Fuzzy Ratio - Minimum difference ratio for matching a device name. */
   "fuzzyRatio": string,
-  /** Bluetooth Backend - What tool Toothpick will use for Bluetooth related actions. */
-  "bluetoothBackend": "applescript" | "blueutil",
   /** Favorite Device #1 - Display name of the device you want to bind to 'Connect to Favorite Device #1' command */
   "favoriteDevice1"?: string,
   /** Favorite Device #2 - Display name of the device you want to bind to 'Connect to Favorite Device #2' command */
@@ -19,7 +17,11 @@ type ExtensionPreferences = {
   /** Favorite Device #3 - Display name of the device you want to bind to 'Connect to Favorite Device #3' command */
   "favoriteDevice3"?: string,
   /** Options - If checked, Raycast will close after successfully connecting to a device. */
-  "closeOnSuccessfulConnection": boolean
+  "closeOnSuccessfulConnection": boolean,
+  /** Bluetooth Backend - What tool Toothpick will use for Bluetooth related actions. */
+  "bluetoothBackend": "applescript" | "blueutil",
+  /** Override Blueutil Directory - Set a custom 'blueutil' location for Toothpick to use. */
+  "blueutilDirectory"?: string
 }
 
 /** Preferences accessible in all the extension's commands */
