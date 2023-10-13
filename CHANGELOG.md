@@ -1,5 +1,10 @@
 # Toothpick Changelog
 
+## [Device Addition] - 2023-10-13
+
+- Added rudimentary mappings for the following devices:
+  - Samsung Galaxy Buds+ (custom icon)
+
 ## [QoL Improvement] - 2023-10-05
 
 - Made bluetooth backend preference an optional preference.
