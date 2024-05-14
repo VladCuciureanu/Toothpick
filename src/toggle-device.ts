@@ -1,5 +1,6 @@
 import { getPreferenceValues } from "@raycast/api";
 import { ratio } from "fuzzball";
+import { connectDevice } from "./core/devices/handlers/connect-device";
 import { disconnectDevice } from "./core/devices/handlers/disconnect-device";
 import { getDevicesService } from "./core/devices/devices.service";
 import { showErrorMessage } from "./utils";
@@ -21,13 +22,17 @@ export default async (props: { arguments: { nameOrMacAddress: string | undefined
 
   const device = devices.find(
     (device) =>
-      ratio(device.name, props.arguments.nameOrMacAddress || "") > parseInt(fuzzyRatio) ||
+      ratio(device.name, props.arguments.nameOrMacAddress || "") > parseFloat(fuzzyRatio) ||
       device.macAddress === props.arguments.nameOrMacAddress
   );
 
   if (!device) {
     await showErrorMessage("Device not found");
   } else {
-    await disconnectDevice(device);
+    if (device.connected) {
+      await disconnectDevice(device);
+    } else {
+      await connectDevice(device);
+    }
   }
 };
