@@ -1,5 +1,13 @@
 # Toothpick Changelog
 
+## [Hotfix] - 2025-01-21
+
+- Add an action for copying the device name
+
+## [Hotfix] - 2024-05-15
+
+- Fixed device not disconnecting sometimes on AppleScript backend.
+
 ## [QoL Improvements] - 2024-05-06
 
 - Extended favorite devices functionality to toggle specific devices
