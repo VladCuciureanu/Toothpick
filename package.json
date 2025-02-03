@@ -3,6 +3,7 @@
   "name": "toothpick",
   "title": "Toothpick",
   "description": "Manage Bluetooth connections in Raycast.",
+  "owner": "raycast-ai-extensions-beta",
   "author": "VladCuciureanu",
   "contributors": [
     "briankosw",
@@ -27,7 +28,7 @@
     "svg:optimize": "find assets -type f -name '*.svg' -print0 | xargs -0 -n 1 -P 6 svgo"
   },
   "dependencies": {
-    "@raycast/api": "^1.71.0",
+    "@raycast/api": "^1.90.0",
     "fuzzball": "^2.1.2",
     "run-applescript": "^6.1.0"
   },
@@ -170,6 +171,57 @@
       "disabledByDefault": true
     }
   ],
+  "tools": [
+    {
+      "name": "get-bluetooth-devices",
+      "title": "Get Bluetooth Devices",
+      "description": "Get the names of all known or visible Bluetooth devices"
+    },
+    {
+      "name": "connect-bluetooth-device",
+      "title": "Connect Bluetooth Device",
+      "description": "Connects a given Bluetooth device by their MAC address."
+    },
+    {
+      "name": "disconnect-bluetooth-device",
+      "title": "Disconnect Bluetooth Device",
+      "description": "Disconnects a given Bluetooth device by it's MAC address."
+    }
+  ],
+  "ai": {
+    "evals": [
+      {
+        "input": "What are my Bluetooth devices?",
+        "expected": [
+          {
+            "callsTool": "get-bluetooth-devices"
+          }
+        ]
+      },
+      {
+        "input": "Connect my headphones.",
+        "expected": [
+          {
+            "callsTool": "get-bluetooth-devices"
+          },
+          {
+            "callsTool": "connect-bluetooth-device"
+          }
+        ]
+      },
+      {
+        "input": "Disconnect my devices.",
+        "expected": [
+          {
+            "callsTool": "get-bluetooth-devices"
+          },
+          {
+            "callsTool": "connect-bluetooth-device"
+          }
+        ]
+      }
+    ]
+  },
   "preferences": [
     {
       "name": "fuzzyRatio",
@@ -241,4 +293,3 @@
   "license": "MIT",
   "icon": "icon.png"
 }
-
